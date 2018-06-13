@@ -12,7 +12,7 @@ module.exports = (env) => {
         {
             stats: { modules: false },
             entry: {
-                "react-ui-internalization": ["babel-polyfill", "./react-ui-internalization.js"]
+                "react-internalization": ["babel-polyfill", "./react-internalization.js"]
             },
             performance: {
                 hints: false

@@ -1,1 +1,1 @@
-# react-ui-internalization
+# react-internalization

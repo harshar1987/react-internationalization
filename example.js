@@ -1,3 +1,3 @@
-const ReactInternalization = require("./react-ui-internalization"); 
+const ReactInternalization = require("./react-internalization"); 
 
 console.log(ReactInternalization.translate);

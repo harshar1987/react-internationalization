@@ -1,7 +1,7 @@
 {
-  "name": "react-ui-internalization",
-  "version": "1.0.0",
-  "main": "react-ui-internalization.js",
+  "name": "react-internalization",
+  "version": "1.0.1",
+  "main": "react-internalization.js",
   "description": "A package that encapsulates i18next and exports necessary module for react internalization",
   "scripts": {
     "webpack:dev": "webpack -d",
