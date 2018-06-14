@@ -1,0 +1,1 @@
+export { default as WithTranslation } from "./WithTranslation";

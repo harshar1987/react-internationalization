@@ -17,7 +17,7 @@ i18n
         ns: "Header",
         defaultNS: "Header",
 
-        debug: true,
+        debug: false,
         interpolation: {
             escapeValue: false, 
         },

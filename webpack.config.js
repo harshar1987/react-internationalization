@@ -1,7 +1,8 @@
 const webpack = require("webpack");
 const path = require("path");
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
-
+const CopyWebpackPlugin = require("copy-webpack-plugin");
+const HtmlWebPackPlugin = require("html-webpack-plugin");
+const CleanWebPackPlugin = require("clean-webpack-plugin");
 /* eslint-disable no-unused-vars */
 
 const bundleOutputDir = "./dist";
@@ -10,9 +11,8 @@ module.exports = (env) => {
     const devMode = !(env && env.prod);
     return [
         {
-            stats: { modules: false },
             entry: {
-                "react-internalization": ["babel-polyfill", "./react-internalization.js"]
+                "index": ["./src/index.js"]
             },
             performance: {
                 hints: false
@@ -20,7 +20,8 @@ module.exports = (env) => {
             resolve: { extensions: [".js", ".jsx", ".ts", ".tsx", ".css", ".json"] },
             output: {
                 path: path.resolve(__dirname, bundleOutputDir),
-                filename: "[name].js"
+                filename: "[name].js",
+                 libraryTarget: "commonjs2"
             },
             module:
                 {
@@ -28,45 +29,21 @@ module.exports = (env) => {
                         [
                             {
                                 test: /\.(js|jsx)$/,
-                                exclude: /node_modules/,
-                                use:
-                                    {
-                                        loader: "babel-loader",
-                                        options: {
-                                            presets: ["env", "babel-preset-react"]
-                                        }
+                                include:path.resolve(__dirname, 'src'),
+                                exclude:/(node_modules|examples|dist)/,
+                                use: {
+                                    loader: "babel-loader",
+                                    options: {
+                                        presets: ['env']
                                     }
+                                }
                             }
                         ]
                 },
-            optimization:
-                {
-                    minimizer:
-                        [
-                            new UglifyJsPlugin({
-                                cache: true,
-                                parallel: true,
-                                sourceMap: true,
-                                uglifyOptions: {
-                                    compress: {
-                                        /* eslint-disable camelcase */
-                                        drop_console: true
-                                    }
-                                }
-                            })
-                        ],
-                    splitChunks:
-                        {
-                            chunks: "all",
-                            cacheGroups: {
-                                default: {
-                                    minChunks: 2,
-                                    priority: -20,
-                                    reuseExistingChunk: true
-                                }
-                            }
-                        }
-                },
+            optimization: {
+                // We no not want to minimize our code.
+                minimize: false
+            },
             plugins:
                 [
                     new webpack.SourceMapDevToolPlugin({
@@ -74,8 +51,19 @@ module.exports = (env) => {
                         exclude: /node_modules/,
                         moduleFilenameTemplate: path.relative(bundleOutputDir, "[resourcePath]")
                     }),
-                    new webpack.HotModuleReplacementPlugin()
-                    //, new BundleAnalyzerPlugin()
+                    new webpack.HotModuleReplacementPlugin(),
+                    new CleanWebPackPlugin(["dist"], { root: path.resolve(__dirname) }),
+                    new HtmlWebPackPlugin({
+                        template: "./src/examples/index.html",
+                        title: "React app"
+                    }),
+                    new CopyWebpackPlugin([
+                        {
+                            context: "./src/examples/locales",
+                            from: "**/*",
+                            to: "./locales"
+                        }
+                    ])
                 ],
             devtool: "cheap-module-eval-source-map",
             devServer:
