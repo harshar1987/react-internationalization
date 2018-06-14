@@ -1,6 +1,6 @@
 {
   "name": "react-internalization",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "main": "dist/index.js",
   "description": "A package that encapsulates i18next and exports necessary module for react internalization",
   "scripts": {
