@@ -1,8 +1,8 @@
 {
-  "name": "react-internalization",
-  "version": "1.1.6",
+  "name": "si-react-localize",
+  "version": "1.1.2",
   "main": "dist/index.js",
-  "description": "A package that encapsulates i18next and exports necessary module for react internalization",
+  "description": "This package encapsulates i18next and provides a higher order component 'WithTranslation' required for string localizations",
   "scripts": {
     "build": "npm run webpack:prod",
     "build:dev": "npm run webpack:dev",
@@ -10,7 +10,14 @@
     "webpack:prod": "webpack -p",
     "serve": "webpack-dev-server -d --open",
     "start": "npm run serve",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "jsx"
+    ],
+    "setupTestFrameworkScriptFile": "<rootDir>src/__setup/jestconfig.js"
   },
   "author": "'Harsha Ramachandra'",
   "license": "MIT",
@@ -24,7 +31,10 @@
     "babel-preset-react": "^6.24.1",
     "clean-webpack-plugin": "^0.1.19",
     "copy-webpack-plugin": "^4.5.1",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
     "html-webpack-plugin": "^3.2.0",
+    "jest": "^23.1.0",
     "react-dom": "^16.4.1",
     "webpack": "^4.12.0",
     "webpack-cli": "^3.0.4",
@@ -42,14 +52,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/harshar1987/react-ui-internalization.git"
+    "url": "git+https://github.com/harshar1987/react-internationalization.git"
   },
   "keywords": [
     "react",
-    "internalization"
+    "internationalization"
   ],
   "bugs": {
-    "url": "https://github.com/harshar1987/react-ui-internalization/issues"
+    "url": "https://github.com/harshar1987/react-internationalization/issues"
   },
-  "homepage": "https://github.com/harshar1987/react-ui-internalization#readme"
+  "homepage": "https://github.com/harshar1987/react-internationalization#readme"
 }

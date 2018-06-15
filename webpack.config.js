@@ -29,7 +29,6 @@ module.exports = (env) => {
                         [
                             {
                                 test: /\.(js|jsx)$/,
-                                include:path.resolve(__dirname, 'src'),
                                 exclude:/(node_modules|examples|dist)/,
                                 use: {
                                     loader: "babel-loader",

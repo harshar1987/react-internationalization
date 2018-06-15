@@ -1,1 +1,1 @@
-# react-internalization
+# si-react-localize
