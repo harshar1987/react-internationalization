@@ -1,6 +1,6 @@
 {
   "name": "si-react-localize",
-  "version": "1.1.2",
+  "version": "1.1.9",
   "main": "dist/index.js",
   "description": "This package encapsulates i18next and provides a higher order component 'WithTranslation' required for string localizations",
   "scripts": {
@@ -8,9 +8,11 @@
     "build:dev": "npm run webpack:dev",
     "webpack:dev": "webpack -d",
     "webpack:prod": "webpack -p",
+    "webpack:watch": "webpack --watch",
     "serve": "webpack-dev-server -d --open",
     "start": "npm run serve",
-    "test": "jest"
+    "test": "jest",
+    "test:watch": "jest --watchAll"
   },
   "jest": {
     "moduleFileExtensions": [
@@ -50,14 +52,14 @@
     "i18next-xhr-backend": "^1.5.1",
     "react-i18next": "^7.7.0"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/harshar1987/react-internationalization.git"
-  },
   "keywords": [
     "react",
     "internationalization"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/harshar1987/react-internationalization.git"
+  },
   "bugs": {
     "url": "https://github.com/harshar1987/react-internationalization/issues"
   },

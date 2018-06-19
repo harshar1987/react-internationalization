@@ -1,11 +1,17 @@
 /* eslint-disable */
 const React = require("react");
-const WithTranslation = require("../WithTranslation");
+let WithTranslation = require("../WithTranslation");
 
-module.exports = {
-
-    WithTranslation: props => Component => () => {
-        const { ns, ...rest } = props;
-        return (<Component {...rest} localize={text => text} />);
+WithTranslation = props => Component => {
+    
+    const ns = props.ns;
+    const WrappedComponent = props => {
+        return (<Component {...props} localize={text => text} />);
     }
+
+    return WrappedComponent;
 }
+
+export default WithTranslation;
+
+

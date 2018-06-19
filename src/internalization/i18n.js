@@ -8,18 +8,14 @@ i18n
     .use(LanguageDetector)
     .use(reactI18nextModule)
     .init({
-        fallbackLng: {
-            "en-US": ["en-GB","en"],
-            "no": ["nb"],
-            default: ["en"],
-          },
-
-        ns: "Header",
-        defaultNS: "Header",
-
+        fallbackLng: { 
+            "en": ["en-US"], 
+            "en-GB": ["en"],
+            default: ["en"]
+        },
         debug: false,
         interpolation: {
-            escapeValue: false, 
+            escapeValue: false,
         },
 
         react: {

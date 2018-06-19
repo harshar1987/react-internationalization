@@ -1,8 +1,16 @@
-import React from "react"
-import WithTranslation from "../WithTranslation";
+import React from "react";
+import Header from "./Header";
 
-console.log(typeof WithTranslation);
-const Header = (props) => (<div>{props.localize(props.title)}</div>);
-const WithTranslationComp = WithTranslation({ns: "Header", title: "header"})(Header);
+const WithTranslationExample = (props) => {
+    return (
+        <div>
+            <Header title={props.headerTitle} />
+        </div>
+    );
+};
 
-export default WithTranslationComp;
+WithTranslationExample.defaultProps = {
+    headerTitle: "Movie Cards"
+};
+
+export default WithTranslationExample;
